@@ -11,7 +11,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://gob3-friday-default-rtdb.firebaseio.com",
+  databaseURL: "https://mb-foods-default-rtdb.firebaseio.com",
 });
 
 // firebase database object
@@ -57,7 +57,7 @@ app.post("/paystack/payment", async (req, res, next) => {
   };
 
   try {
-    await db.collection("orders").add(req.body.orderDetails);
+    // await db.collection("orders").add(req.body.orderDetails);
     const response = await axios.post(
       "https://api.paystack.co/transaction/initialize",
       data,
@@ -89,7 +89,7 @@ app.post("/paystack/event", async function (req, res) {
         await axios.post(
           "https://us-central1-delivery-system-adroit.cloudfunctions.net/postOrderToDeliverySystem",
           {
-            sellerName: "Gob3 Friday",
+            sellerName: "Mb Foods",
             orderDetails: order.data(),
           }
         );
