@@ -69,7 +69,7 @@ export class OrderPageComponent implements OnInit {
   public data: any;
   modalOpen = false;
 
-  url = 'https://mb-foods.herokuapp.com/paystack/payment';
+  url = 'https://mbfoodsapi.azurewebsites.net/paystack/payment';
   // url = 'http://localhost:8000/paystack/payment';
 
   paymentError = true;
